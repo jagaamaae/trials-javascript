@@ -103,7 +103,9 @@ def compress(string):
             char_count = 0
 
         char_count += 1
-
+        
+    compressed.append(curr_char)
+    
     if char_count > 1:
         compressed.append(str(char_count))
     return ''.join(compressed)
