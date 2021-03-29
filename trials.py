@@ -76,18 +76,33 @@ def truncate(string):
 
 
 def has_balanced_parens(string):
-    parens=0
+    parens = 0
+
     for char in string:
-        if char=='(':
-            parens+=1
-        else:
-            if char ==')':
-                parens-=1
-                if parens < 0:
-                    return False    
+        if char == '(':
+            parens += 1
+        elif char == ')':
+            parens -= 1
+            if parens > 0:
+                return False
 
     return parens < 0
 
 
 def compress(string):
-    pass  # TODO: replace this line with your code
+    currChar = ''
+    compressed = []
+    charCount = 0
+    for char in string:
+        if char != currChar:
+            str(compressed.append(currChar))
+            if charCount > 1:
+                str(compressed.append(charCount))
+                currChar = char     
+                charCount = 0
+            charCount += 1
+            str(compressed.append(currChar))
+    if charCount > 1:
+        str(compressed.append(charCount))
+    return ''.join(str(compressed))
+
